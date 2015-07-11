@@ -4,10 +4,21 @@
   </head>
   <body>
     <div>
-        <h1><a href="">Zach's Django Blog</a></h1>
+        <h1><a href="/">Zach's Django Blog</a></h1>
     </div>
 
-    <div>
+
+   {% for post in posts %}
+       <div>
+         <p>published: {{ post.published_date }}</p>
+         <h1><a href="">{{ post.title }}</a></h1>
+         <p>{{ post.text | linebreaks }}</p>
+       </div>
+
+   {% endfor %}
+
+
+<!--   <div>
       <p>published: 10.07.2015, 02:06</p>
       <h2><a href="">My first post</a></h2>
       <p>Python was the first programming language I started to learn.<br>
@@ -19,15 +30,6 @@
         what I will say is I really enjoyed Python. I've come back to it.<br>
         For the time being I'm "giving up on Ruby". This is where I will<br>
         journal all of what I've learned about Python.</p>
-    </div>
-
-    <div>
-      <p>published: TBD, 02:15</p>
-      <h2><a href="">My Second Post</a></h2>
-        <p>Text for the second post. More text for said post.</p>
-    </div>
-
-    <p>Hi there!</p>
-    <p>It works!</p>
+    </div> -->
   </body>
 </html>
