@@ -1,35 +1,28 @@
-<html>
-  <head>
-    <title>Zach learns Python and django</title>
-  </head>
-  <body>
-    <div>
-        <h1><a href="/">Zach's Django Blog</a></h1>
-    </div>
+{% extends "blog/base.html" %}
 
-
-   {% for post in posts %}
-       <div>
-         <p>published: {{ post.published_date }}</p>
-         <h1><a href="">{{ post.title }}</a></h1>
-         <p>{{ post.text | linebreaks }}</p>
-       </div>
-
-   {% endfor %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="{% url "blog.views.post_detail" pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaks }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
 
 
 <!--   <div>
       <p>published: 10.07.2015, 02:06</p>
       <h2><a href="">My first post</a></h2>
-      <p>Python was the first programming language I started to learn.<br>
-        I didn't fully understand what I was doing, but I kept at it.<br>
-        Once I learned the company I worked for used Ruby and Rails, I<br>
-        thought it might be helpful for me to also learn Ruby. I stuck<br>
-        with it a bit, and have enjoyed Ruby, but always came back to Python<br>
-        I won't get in to any debates about which is better. That's foolish,<br>
-        what I will say is I really enjoyed Python. I've come back to it.<br>
-        For the time being I'm "giving up on Ruby". This is where I will<br>
+      <p>Python was the first programming language I started to learn.
+        I didn't fully understand what I was doing, but I kept at it.
+        Once I learned the company I worked for used Ruby and Rails, I
+        thought it might be helpful for me to also learn Ruby. I stuck
+        with it a bit, and have enjoyed Ruby, but always came back to Python.
+        I won't get in to any debates about which is better. That's foolish,
+        what I will say is I really enjoyed Python. I've come back to it.
+        For the time being I'm "giving up on Ruby". This is where I will
         journal all of what I've learned about Python.</p>
     </div> -->
-  </body>
-</html>
